@@ -1,10 +1,14 @@
 package com.greenfox.exam.spring.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name = "questions")
 public class Question {
 
+  @Id
   private Long id;
   private String question;
 }
