@@ -16,4 +16,9 @@ public class QuestionContainer {
     id = 1;
     this.questions = questions;
   }
+
+  public QuestionContainer setQuestions(List<Question> questions) {
+    this.questions = questions;
+    return this;
+  }
 }
