@@ -37,11 +37,8 @@ public class QuestionHandler {
   }
 
   public boolean isEveryAnswerRight(AnswerContainer answerContainer) {
-    for (Answer answer: answerContainer.getAnswers()) {
+    for (Answer answer : answerContainer.getAnswers()) {
       if (!answer.getAnswer().equals(questionRepository.findById(answer.getId()).getAnswer())) {
-        System.out.println("answer id: " + answer.getId());
-        System.out.println("answer: " + answer.getAnswer() +
-        "question is waiting for: " + questionRepository.findById(answer.getId()).getAnswer());
         return false;
       }
     }
