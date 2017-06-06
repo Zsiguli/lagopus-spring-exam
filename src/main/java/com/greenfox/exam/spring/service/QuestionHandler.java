@@ -1,5 +1,6 @@
 package com.greenfox.exam.spring.service;
 
+import com.greenfox.exam.spring.model.Answer;
 import com.greenfox.exam.spring.model.AnswerContainer;
 import com.greenfox.exam.spring.model.Question;
 import com.greenfox.exam.spring.model.QuestionContainer;
@@ -27,11 +28,23 @@ public class QuestionHandler {
     return questionContainer.setQuestions(randomFiveQuestion);
   }
 
-  public Object answerChecker(AnswerContainer answers) {
-    if (true) {
+  public Object answerChecker(AnswerContainer answerContainer) {
+    if (isEveryAnswerRight(answerContainer)) {
       return new RestTemplate().getForObject("https://springexamserver.herokuapp.com/projects/sabers", Object.class);
     } else {
       return new ArrayList<>();
     }
+  }
+
+  public boolean isEveryAnswerRight(AnswerContainer answerContainer) {
+    for (Answer answer: answerContainer.getAnswers()) {
+      if (!answer.getAnswer().equals(questionRepository.findById(answer.getId()).getAnswer())) {
+        System.out.println("answer id: " + answer.getId());
+        System.out.println("answer: " + answer.getAnswer() +
+        "question is waiting for: " + questionRepository.findById(answer.getId()).getAnswer());
+        return false;
+      }
+    }
+    return true;
   }
 }
