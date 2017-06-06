@@ -32,7 +32,10 @@ public class QuestionHandler {
     if (isEveryAnswerRight(answerContainer)) {
       return new RestTemplate().getForObject("https://springexamserver.herokuapp.com/projects/sabers", Object.class);
     } else {
-      return new ArrayList<>();
+      AnswerContainer noAnswers = new AnswerContainer();
+      noAnswers.setAnswers(new ArrayList<>());
+      noAnswers.setId(0);
+      return noAnswers;
     }
   }
 

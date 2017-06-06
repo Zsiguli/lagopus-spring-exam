@@ -12,7 +12,7 @@ public class QuestionContainer {
   private int id;
   private List<Question> questions;
 
-  public QuestionContainer (List<Question> questions) {
+  public QuestionContainer(List<Question> questions) {
     id = 1;
     this.questions = questions;
   }
