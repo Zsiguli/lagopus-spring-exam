@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Question {
 
-  private int id;
+  private Long id;
   private String question;
 }
